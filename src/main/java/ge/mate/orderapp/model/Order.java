@@ -2,7 +2,6 @@ package ge.mate.orderapp.model;
 
 import ge.mate.orderapp.enums.OrderStatus;
 import ge.mate.orderapp.enums.PaymentType;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-@Component
 public class Order {
 
     private Long itemId;
@@ -42,18 +40,18 @@ public class Order {
         return subtotal;
     }
 
-    void setFinalAmount(BigDecimal finalAmount) {
+    public void setFinalAmount(BigDecimal finalAmount) {
         if (finalAmount == null || finalAmount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Final amount cannot be null or zero");
         }
         this.finalAmount = finalAmount;
     }
 
-    void markAsPaid() {
+    public void markAsPaid() {
         this.orderStatus = OrderStatus.PAID;
     }
 
-    void addOrderItem(OrderItem orderItem) {
+    public void addOrderItem(OrderItem orderItem) {
 
         if (orderItem==null) {
             throw new IllegalArgumentException("Order item cannot be null");
@@ -72,12 +70,16 @@ public class Order {
         return orderItems == null ? Collections.emptyList() : Collections.unmodifiableList(orderItems);
     }
 
+    public BigDecimal getFinalAmount() {
+        return finalAmount;
+    }
+
     public BigDecimal getOriginalAmount() {
         return originalAmount;
     }
 
-    public BigDecimal getFinalAmount() {
-        return finalAmount;
+    public BigDecimal getFinalAmount(BigDecimal finalAmount) {
+        return this.finalAmount;
     }
 
     public PaymentType getPaymentType() {
@@ -87,4 +89,6 @@ public class Order {
     public OrderStatus getOrderStatus() {
         return orderStatus;
     }
+
+
 }

@@ -1,4 +1,9 @@
 package ge.mate.orderapp.event;
 
-public class OrderCreatedEvent {
+import ge.mate.orderapp.enums.PaymentType;
+
+import java.math.BigDecimal;
+
+public record OrderCreatedEvent(Long orderId, BigDecimal finalAmount, PaymentType paymentType) {
+
 }
