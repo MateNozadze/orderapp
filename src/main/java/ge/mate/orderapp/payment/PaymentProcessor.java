@@ -1,4 +1,11 @@
 package ge.mate.orderapp.payment;
 
-public class PaymentProcessor {
+import ge.mate.orderapp.enums.PaymentType;
+
+import java.math.BigDecimal;
+
+public interface PaymentProcessor {
+
+    PaymentType getPaymentType();
+    void processPayment(BigDecimal amount);
 }

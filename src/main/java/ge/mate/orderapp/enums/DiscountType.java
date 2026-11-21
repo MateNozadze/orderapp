@@ -1,4 +1,4 @@
-package ge.mate.orderapp.strategy;
+package ge.mate.orderapp.enums;
 
 public enum DiscountType {
     STANDARD,
